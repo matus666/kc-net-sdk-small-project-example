@@ -45,6 +45,19 @@ namespace KcNetSdkSmallProjectExample.Controllers
             return View(persons.Items);
         }
 
+        public async Task<IActionResult> Person(string id)
+        {
+            var person = (await Client.GetItemsAsync(
+                    new EqualsFilter("system.type", "person"),
+                    new EqualsFilter("elements.url_slug", id))
+                )
+                .Items
+                .FirstOrDefault();
+
+
+            return View(person);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
