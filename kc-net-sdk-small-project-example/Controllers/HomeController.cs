@@ -11,6 +11,11 @@ namespace KcNetSdkSmallProjectExample.Controllers
 {
     public class HomeController : BaseController
     {
+        public IDeliveryClient DIClient;
+        public HomeController(IDeliveryClient client)
+        {
+            DIClient = client;
+        }
         public IActionResult Index()
         {
             return View();
@@ -56,6 +61,21 @@ namespace KcNetSdkSmallProjectExample.Controllers
 
 
             return View(person);
+        }
+
+        public async Task<IActionResult> TypedPerson(string id)
+        {
+            var typedPerson = (await DIClient.GetItemsAsync<Person>(
+                    new EqualsFilter("system.type", "person"),
+                    new EqualsFilter("elements.url_slug", id), 
+                    new DepthParameter(2)
+                    )
+                )
+                .Items
+                .FirstOrDefault();
+
+
+            return View(typedPerson);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

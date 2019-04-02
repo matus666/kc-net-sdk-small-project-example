@@ -10,7 +10,8 @@
 <ul>
     @foreach (var person in Model)
     {
-        <li> @Html.ActionLink(person.GetString("name_and_surname"), "person", new { id = person.GetString("url_slug") })</li>
+    <li> @Html.ActionLink(person.GetString("name_and_surname"), "person", new { id = person.GetString("url_slug") }) (@Html.ActionLink("Typed", "typedperson", new { id = person.GetString("url_slug") }))</li>
+
     }
 </ul>
 

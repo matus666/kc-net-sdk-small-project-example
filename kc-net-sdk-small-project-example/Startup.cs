@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KcNetSdkSmallProjectExample.Models;
+using KcNetSdkSmallProjectExample.Resolvers;
+using KenticoCloud.Delivery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +33,27 @@ namespace KcNetSdkSmallProjectExample
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services
+            .AddSingleton<IContentLinkUrlResolver, CustomContentLinkUrlResolver>()
+            .AddSingleton<ITypeProvider, CustomTypeProvider>()
+            .AddDeliveryClient(DeliveryOptionsBuilder.CreateInstance()
+                .WithProjectId("09fc0115-dd4d-00c7-5bd9-5f73836aee81")
+                .UseProductionApi
+                .WithMaxRetryAttempts(5)
+                .Build());
+
+            // Equal expresison
+            //services
+            //    .AddSingleton(DeliveryClientBuilder
+            //        .WithOptions(builder => builder
+            //            .WithProjectId("09fc0115-dd4d-00c7-5bd9-5f73836aee81")
+            //            .UseProductionApi
+            //            .WithMaxRetryAttempts(5)
+            //            .Build())
+            //        .WithTypeProvider(new CustomTypeProvider())
+            //        .WithContentLinkUrlResolver(new CustomContentLinkUrlResolver())
+            //        .Build());
 
             // Here could be added Controller definition
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
