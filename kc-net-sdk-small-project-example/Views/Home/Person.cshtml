@@ -8,6 +8,6 @@
 
 <h2>@Model.GetString("name_and_surname")</h2>
 <div>
-    @Model.GetString("bio");      
+    @Html.Raw(Model.GetString("bio"))   
 </div>
 
