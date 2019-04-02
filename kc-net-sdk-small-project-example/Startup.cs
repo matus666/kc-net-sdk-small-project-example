@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace kc_net_sdk_small_project_example
+namespace KcNetSdkSmallProjectExample
 {
     public class Startup
     {
@@ -31,7 +31,7 @@ namespace kc_net_sdk_small_project_example
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            // Here could be added Controller definition
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace kc_net_sdk_small_project_example
+namespace KcNetSdkSmallProjectExample
 {
     public class Program
     {

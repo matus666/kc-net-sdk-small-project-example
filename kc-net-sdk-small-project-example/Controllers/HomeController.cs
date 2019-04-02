@@ -4,11 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using kc_net_sdk_small_project_example.Models;
+using KcNetSdkSmallProjectExample.Models;
+using KenticoCloud.Delivery;
 
-namespace kc_net_sdk_small_project_example.Controllers
+namespace KcNetSdkSmallProjectExample.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public IActionResult Index()
         {
@@ -32,6 +33,16 @@ namespace kc_net_sdk_small_project_example.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public async Task<IActionResult> Persons()
+        {
+            var persons = await Client.GetItemsAsync(
+                new EqualsFilter("system.type", "person")
+            );
+
+
+            return View(persons.Items);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,6 +1,6 @@
 using System;
 
-namespace kc_net_sdk_small_project_example.Models
+namespace KcNetSdkSmallProjectExample.Models
 {
     public class ErrorViewModel
     {

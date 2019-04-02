@@ -1,0 +1,17 @@
+﻿@model IReadOnlyList<ContentItem>
+
+    @{
+        ViewData["Title"] = "Persons";
+    }
+
+    <h2>Persons</h2>
+
+
+    <ul>
+        @foreach (var person in Model)
+        {
+        <li> @person.GetString("name_and_surname")</li>
+        }
+    </ul>
+
+
