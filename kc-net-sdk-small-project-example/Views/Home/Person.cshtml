@@ -1,0 +1,13 @@
+﻿@model ContentItem
+
+@{
+    ViewData["Title"] = "Person";
+}
+
+<h2>Person</h2>
+
+<h2>@Model.GetString("name_and_surname")</h2>
+<div>
+    @Html.Raw(Model.GetString("bio"))   
+</div>
+

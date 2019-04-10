@@ -1,0 +1,28 @@
+﻿@model KcNetSdkSmallProjectExample.Models.Repository
+
+<div>
+    <h4>Repository</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            <pre style="white-space: pre-line;">
+@Html.DisplayFor(model => model.Description)
+            </pre>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+    </dl>
+</div>
